@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AddUserDto implements IBasicDto {
+public class UserDto implements IBasicDto {
 
     private String firstName;
     private String lastName;

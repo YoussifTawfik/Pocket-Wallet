@@ -7,9 +7,9 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class AddUserResponse implements IBasicResponse {
+public class UserResponse implements IBasicResponse {
 
-    private Long id;
+    //private Long id;
     private String firstName;
     private String lastName;
     private String phone;

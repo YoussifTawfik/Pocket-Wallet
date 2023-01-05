@@ -1,6 +1,6 @@
 package com.pocket.wallet.exceptions;
 
-public class PocketWalletException extends RuntimeException {
+public abstract class PocketWalletException extends RuntimeException {
 
     public PocketWalletException(){
         super();

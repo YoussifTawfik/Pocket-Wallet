@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoryService {
 
-    private UserCategoryRepository userCategoryRepository;
+    private final UserCategoryRepository userCategoryRepository;
 
     public CategoryService(UserCategoryRepository userCategoryRepository){
         this.userCategoryRepository=userCategoryRepository;
