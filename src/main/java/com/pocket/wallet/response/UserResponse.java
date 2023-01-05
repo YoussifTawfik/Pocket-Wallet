@@ -10,6 +10,7 @@ import lombok.ToString;
 public class UserResponse implements IBasicResponse {
 
     //private Long id;
+    private String asyncId;
     private String firstName;
     private String lastName;
     private String phone;

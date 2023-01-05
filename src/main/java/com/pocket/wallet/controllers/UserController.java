@@ -4,6 +4,7 @@ import com.pocket.wallet.dto.UserDto;
 import com.pocket.wallet.models.UserModel;
 import com.pocket.wallet.response.GeneralResponse;
 import com.pocket.wallet.response.IBasicResponse;
+import com.pocket.wallet.response.ResponseMessage;
 import com.pocket.wallet.response.UserResponse;
 import com.pocket.wallet.services.user.UserService;
 import com.pocket.wallet.transfomers.UserTransformer;
@@ -37,6 +38,6 @@ public class UserController {
         model=userService.addUser(model);
         // Transform Response
         UserResponse response=userTransformer.transformResponse(model);
-        return new GeneralResponse<>(HttpStatus.OK.value(),"User has been added successfully", response);
+        return new GeneralResponse<>(HttpStatus.OK.value(),"User "+ ResponseMessage.ADDED.getMessage(), response);
     }
 }

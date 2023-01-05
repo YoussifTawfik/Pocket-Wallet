@@ -9,6 +9,7 @@ import lombok.ToString;
 @ToString
 public class UserModel implements IBasicModel {
 
+    private String asyncId;
     private String firstName;
     private String lastName;
     private String phone;
