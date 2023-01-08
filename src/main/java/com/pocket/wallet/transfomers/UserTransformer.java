@@ -16,6 +16,7 @@ public class UserTransformer implements IParentTransformer<UserDto, UserModel, U
         model.setAsyncId(UUID.randomUUID().toString());
         model.setFirstName(request.getFirstName());
         model.setLastName(request.getLastName());
+        model.setEmail(request.getEmail());
         model.setPhone(request.getPhone());
         model.setPassword(request.getPassword());
         model.setCategory(request.getCategory());
@@ -28,6 +29,7 @@ public class UserTransformer implements IParentTransformer<UserDto, UserModel, U
         response.setAsyncId(model.getAsyncId());
         response.setFirstName(model.getFirstName());
         response.setLastName(model.getLastName());
+        response.setEmail(model.getEmail());
         response.setPhone(model.getPhone());
         response.setPassword(model.getPassword());
         response.setCategory(model.getCategory());

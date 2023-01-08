@@ -11,6 +11,7 @@ public class UserHelper {
         UserEntity userEntity=new UserEntity();
         userEntity.setFirstName(model.getFirstName());
         userEntity.setLastName(model.getLastName());
+        userEntity.setEmail(model.getEmail());
         userEntity.setPhone(model.getPhone());
         userEntity.setPassword(model.getPassword());
         return userEntity;

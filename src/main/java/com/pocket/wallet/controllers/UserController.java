@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PostMapping
-    public GeneralResponse<IBasicResponse> addUser(@RequestBody UserDto userDto){
+    public GeneralResponse<IBasicResponse> addUser(@RequestBody UserDto userDto) throws Exception {
         log.info(userDto.toString());
         // Transform Request
         UserModel model=userTransformer.transformRequest(userDto);

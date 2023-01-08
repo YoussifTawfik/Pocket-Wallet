@@ -20,6 +20,9 @@ public class UserEntity extends BasicEntity {
     @Column(name = "LAST_NAME")
     private String lastName;
 
+    @Column(name = "EMAIL",unique = true)
+    private String email;
+
     @Column(name = "PHONE", unique = true)
     @NotNull
     private String phone;
