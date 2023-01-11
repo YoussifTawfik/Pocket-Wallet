@@ -1,5 +1,7 @@
 package com.pocket.wallet.exceptions;
 
+import com.pocket.wallet.exceptions.response.ErrorCodes;
+
 public abstract class PocketWalletException extends RuntimeException {
 
     public PocketWalletException(){
@@ -9,5 +11,7 @@ public abstract class PocketWalletException extends RuntimeException {
     public PocketWalletException(String message){
         super(message);
     }
+
+    public abstract ErrorCodes getErrorCode();
 
 }

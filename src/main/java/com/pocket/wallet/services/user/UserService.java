@@ -13,6 +13,9 @@ import com.pocket.wallet.utilities.AESCipher;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService {
 
@@ -37,6 +40,11 @@ public class UserService {
         user.setUserCategory(userCategory);
         userRepository.save(user);
         return userModel;
+    }
+
+    public List<UserModel> getAllUsers(){
+        List<UserEntity> userEntityList=userRepository.findAll();
+        return userEntityList.stream().map(userHelper::mapToModel).collect(Collectors.toList());
     }
 
 }

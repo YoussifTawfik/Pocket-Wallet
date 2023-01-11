@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionControllerAdvice {
 
     @ExceptionHandler(UserCategoryNotFound.class)
-    public ResponseEntity<ErrorDetails> categoryNotFound(){
+    public ResponseEntity<ErrorDetails> categoryNotFound(UserCategoryNotFound ex){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ErrorDetails(ErrorCodes.UNDEFINED_USER_CATEGORY.getCode()));
+                .body(new ErrorDetails(ex.getErrorCode().getCode(), ex.getErrorCode().getMessage()));
     }
 
 }

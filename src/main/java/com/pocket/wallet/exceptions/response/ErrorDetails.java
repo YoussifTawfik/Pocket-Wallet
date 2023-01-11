@@ -11,17 +11,14 @@ import java.time.LocalDateTime;
 @ToString
 public class ErrorDetails {
 
+    private Integer code;
     private String message;
-    private String description;
     private LocalDateTime timeStamp;
 
-    public ErrorDetails( String msg){
+    public ErrorDetails(Integer code, String msg){
         message=msg;
+        this.code=code;
         this.timeStamp=LocalDateTime.now();
     }
 
-    public ErrorDetails( String message, String description) {
-        this(message);
-        this.description = description;
-    }
 }
