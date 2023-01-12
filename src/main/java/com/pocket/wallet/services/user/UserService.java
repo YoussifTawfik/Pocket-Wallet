@@ -10,6 +10,7 @@ import com.pocket.wallet.response.IBasicResponse;
 import com.pocket.wallet.response.UserResponse;
 import com.pocket.wallet.services.category.CategoryService;
 import com.pocket.wallet.utilities.AESCipher;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -17,20 +18,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
-    private final IWalletRepository<UserEntity> userRepository;
+    private final UserRepository userRepository;
     private final CategoryService categoryService;
     private final UserHelper userHelper;
     private final AESCipher aesCipher;
 
-    public UserService(@Qualifier("USER") UserRepository userRepository, CategoryService categoryService,
-                       UserHelper userHelper, AESCipher aesCipher){
-        this.userRepository=userRepository;
-        this.categoryService=categoryService;
-        this.userHelper=userHelper;
-        this.aesCipher=aesCipher;
-    }
 
     public UserModel addUser(UserModel userModel) throws Exception {
         userModel.setPassword(aesCipher.encrypt(userModel.getPassword()));

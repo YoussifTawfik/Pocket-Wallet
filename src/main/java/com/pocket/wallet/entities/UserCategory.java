@@ -1,5 +1,6 @@
 package com.pocket.wallet.entities;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @ToString
+@Builder
 public class UserCategory extends BasicEntity {
 
     @Column(name = "CODE")

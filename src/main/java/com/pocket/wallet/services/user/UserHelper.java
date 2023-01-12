@@ -18,13 +18,12 @@ public class UserHelper {
     }
 
     public UserModel mapToModel(UserEntity userEntity){
-        UserModel model=new UserModel();
-        model.setFirstName(userEntity.getFirstName());
-        model.setLastName(userEntity.getLastName());
-        model.setEmail(userEntity.getEmail());
-        model.setPhone(userEntity.getPhone());
-        model.setCategory(userEntity.getUserCategory().getCode());
-        return model;
+        return UserModel.builder()
+                .firstName(userEntity.getFirstName())
+                .lastName(userEntity.getLastName())
+                .email(userEntity.getEmail())
+                .phone(userEntity.getPhone())
+                .category(userEntity.getUserCategory().getCode()).build();
     }
 
 }
