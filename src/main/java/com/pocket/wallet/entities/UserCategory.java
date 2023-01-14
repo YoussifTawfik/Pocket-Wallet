@@ -1,20 +1,17 @@
 package com.pocket.wallet.entities;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+@Builder
 @Table(name = "USER_CATEGORY")
 @Entity
-@Getter
-@Setter
-@ToString
-@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserCategory extends BasicEntity {
 
     @Column(name = "CODE")

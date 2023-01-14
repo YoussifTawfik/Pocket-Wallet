@@ -17,6 +17,6 @@ import java.io.Serializable;
 public class BasicEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 }

@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping
-    public IBasicResponse getAllUsers(){
-        return new GeneralResponse<>(HttpStatus.OK.value(),ResponseMessage.EXECUTED.getMessage(),userService.getAllUsers());
+    public IBasicResponse getAllUsers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "2") int size){
+        return new GeneralResponse<>(HttpStatus.OK.value(),ResponseMessage.EXECUTED.getMessage(),userService.getAllUsers(page,size));
     }
 }

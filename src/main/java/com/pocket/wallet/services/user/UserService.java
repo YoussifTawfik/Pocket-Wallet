@@ -8,8 +8,11 @@ import com.pocket.wallet.repositories.UserRepository;
 import com.pocket.wallet.services.category.CategoryService;
 import com.pocket.wallet.utilities.AESCipher;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,9 +36,10 @@ public class UserService {
         return userModel;
     }
 
-    public List<UserModel> getAllUsers(){
-        List<UserEntity> userEntityList=userRepository.findAll();
-        return userEntityList.stream().map(userHelper::mapToModel).collect(Collectors.toList());
+    public List<UserModel> getAllUsers(int page, int size){
+        Pageable pageable= PageRequest.of(page,size);
+        Page<UserEntity> userEntityList=userRepository.findAll(pageable);
+        return userEntityList.getContent().stream().map(userHelper::mapToModel).collect(Collectors.toList());
     }
 
 }
