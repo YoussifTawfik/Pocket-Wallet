@@ -29,7 +29,7 @@ public class UserController {
     public IBasicResponse addUser(@RequestBody UserDto userDto) throws Exception {
         log.info(userDto.toString());
         UserModel model=userTransformer.transformRequest(userDto);
-        model=userService.addUser(model);
+        userService.addUser(model);
         UserResponse response=userTransformer.transformResponse(model);
         return new GeneralResponse<>(HttpStatus.OK.value(),"User "+ ResponseMessage.ADDED.getMessage(), response);
     }
