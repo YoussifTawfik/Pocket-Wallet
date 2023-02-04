@@ -2,12 +2,13 @@ package com.pocket.wallet.exceptions.response;
 
 public enum ErrorCodes {
 
-    UNDEFINED_USER_CATEGORY(101,"Undefined User Category");
+    UNDEFINED_USER_CATEGORY(Prefix.USER.getPrefix()+"01","Undefined User Category"),
+    INVALID_ACCOUNT_STATUS(Prefix.ACCOUNT.getPrefix()+"01","Invalid Account Status");
 
     private String message;
-    private final Integer code;
+    private final String code;
 
-    ErrorCodes(Integer code, String message){
+    ErrorCodes(String code, String message){
         this.code=code;
         this.message=message;
     }
@@ -16,8 +17,24 @@ public enum ErrorCodes {
         return this.message;
     }
 
-    public Integer getCode(){
+    public String getCode(){
         return this.code;
+    }
+
+
+    private enum Prefix{
+        USER("1"), ACCOUNT("2");
+
+        private String pre;
+
+        private Prefix(String pre){
+            this.pre=pre;
+        }
+
+        public String getPrefix(){
+            return this.pre;
+        }
+
     }
 
 }
