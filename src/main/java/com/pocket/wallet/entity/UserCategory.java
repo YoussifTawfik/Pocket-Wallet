@@ -1,4 +1,4 @@
-package com.pocket.wallet.entities;
+package com.pocket.wallet.entity;
 
 import lombok.*;
 

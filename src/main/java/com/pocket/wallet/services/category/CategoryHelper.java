@@ -1,6 +1,6 @@
 package com.pocket.wallet.services.category;
 
-import com.pocket.wallet.entities.UserCategory;
+import com.pocket.wallet.entity.UserCategory;
 import com.pocket.wallet.models.UserCategoryModel;
 import com.pocket.wallet.services.IBasicHelper;
 import org.springframework.stereotype.Component;

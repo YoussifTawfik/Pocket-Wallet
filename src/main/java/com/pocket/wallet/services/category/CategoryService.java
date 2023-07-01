@@ -1,9 +1,8 @@
 package com.pocket.wallet.services.category;
 
-import com.pocket.wallet.dto.UserCategoryDto;
-import com.pocket.wallet.entities.UserCategory;
+import com.pocket.wallet.entity.UserCategory;
 import com.pocket.wallet.models.UserCategoryModel;
-import com.pocket.wallet.repositories.UserCategoryRepository;
+import com.pocket.wallet.repository.UserCategoryRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,7 @@
 package com.pocket.wallet.services.user;
 
-import com.pocket.wallet.entities.UserEntity;
+import com.pocket.wallet.dto.UserDto;
+import com.pocket.wallet.entity.UserEntity;
 import com.pocket.wallet.models.UserModel;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,16 @@ public class UserHelper {
                 .email(userEntity.getEmail())
                 .phone(userEntity.getPhone())
                 .category(userEntity.getUserCategory().getCode()).build();
+    }
+
+    public UserEntity mapToEntity(UserDto userDto){
+        UserEntity userEntity=new UserEntity();
+        userEntity.setFirstName(userDto.getFirstName());
+        userEntity.setLastName(userDto.getLastName());
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setPhone(userDto.getPhone());
+        userEntity.setPassword(userDto.getPassword());
+        return userEntity;
     }
 
 }

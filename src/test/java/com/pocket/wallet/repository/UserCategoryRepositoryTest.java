@@ -1,6 +1,6 @@
-package com.pocket.wallet.repositories;
+package com.pocket.wallet.repository;
 
-import com.pocket.wallet.entities.UserCategory;
+import com.pocket.wallet.entity.UserCategory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

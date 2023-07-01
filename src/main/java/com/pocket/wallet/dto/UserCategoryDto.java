@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor
 public class UserCategoryDto implements Serializable {
 
     @NonNull

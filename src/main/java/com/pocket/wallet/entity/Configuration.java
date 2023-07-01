@@ -1,5 +1,4 @@
-package com.pocket.wallet.entities;
-
+package com.pocket.wallet.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,15 +10,20 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Builder
-@Table(name = "ACCOUNT_STATUS")
+@Table(name = "CONFIGURATION")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountStatus extends BasicEntity {
+public class Configuration extends BasicEntity {
 
-    @Column(nullable = false)
+    @Column(name = "CODE",nullable = false)
     private String code;
 
+    @Column(name = "VALUE",nullable = false)
+    private String value;
+
+    @Column(name = "DESCRIPTION")
     private String description;
+
 }

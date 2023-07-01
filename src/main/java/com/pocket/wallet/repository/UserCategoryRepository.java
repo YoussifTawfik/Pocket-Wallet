@@ -1,6 +1,6 @@
-package com.pocket.wallet.repositories;
+package com.pocket.wallet.repository;
 
-import com.pocket.wallet.entities.UserCategory;
+import com.pocket.wallet.entity.UserCategory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

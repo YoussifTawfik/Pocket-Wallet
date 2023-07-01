@@ -1,6 +1,6 @@
-package com.pocket.wallet.repositories;
+package com.pocket.wallet.repository;
 
-import com.pocket.wallet.entities.AccountStatus;
+import com.pocket.wallet.entity.AccountStatus;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;

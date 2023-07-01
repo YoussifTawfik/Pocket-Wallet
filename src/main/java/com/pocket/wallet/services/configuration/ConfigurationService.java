@@ -1,7 +1,7 @@
 package com.pocket.wallet.services.configuration;
 
-import com.pocket.wallet.entities.Configuration;
-import com.pocket.wallet.repositories.ConfigurationRepository;
+import com.pocket.wallet.entity.Configuration;
+import com.pocket.wallet.repository.ConfigurationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

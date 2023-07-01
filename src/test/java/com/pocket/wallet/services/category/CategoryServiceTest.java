@@ -1,7 +1,7 @@
 package com.pocket.wallet.services.category;
 
-import com.pocket.wallet.entities.UserCategory;
-import com.pocket.wallet.repositories.UserCategoryRepository;
+import com.pocket.wallet.entity.UserCategory;
+import com.pocket.wallet.repository.UserCategoryRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,8 +11,6 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class CategoryServiceTest {

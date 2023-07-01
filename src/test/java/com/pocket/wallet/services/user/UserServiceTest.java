@@ -1,10 +1,11 @@
 package com.pocket.wallet.services.user;
 
-import com.pocket.wallet.entities.UserCategory;
-import com.pocket.wallet.entities.UserEntity;
+import com.pocket.wallet.dto.UserDto;
+import com.pocket.wallet.entity.UserCategory;
+import com.pocket.wallet.entity.UserEntity;
 import com.pocket.wallet.exceptions.UserCategoryNotFound;
 import com.pocket.wallet.models.UserModel;
-import com.pocket.wallet.repositories.UserRepository;
+import com.pocket.wallet.repository.UserRepository;
 import com.pocket.wallet.services.category.CategoryService;
 import com.pocket.wallet.utilities.AESCipher;
 import org.assertj.core.api.Assertions;
@@ -37,6 +38,8 @@ class UserServiceTest {
     private UserEntity userEntity;
     private UserCategory userCategory;
 
+    private UserDto userDto;
+
     @BeforeEach
     private void init(){
         userModel=UserModel.builder()
@@ -57,6 +60,15 @@ class UserServiceTest {
         userCategory=UserCategory.builder()
                 .code("VIP")
                 .dailyDebitLimit(1000.0).dailyCreditLimit(2000.0).build();
+
+        userDto=new UserDto();
+        userDto.setFirstName("Test");
+        userDto.setLastName("Test");
+        userDto.setEmail("test@gmail.com");
+        userDto.setPhone("0152336652");
+        userDto.setPassword("Hello");
+        userDto.setCategory("VIP");
+
     }
 
 
@@ -65,12 +77,14 @@ class UserServiceTest {
     public void givenUserModel_whenAddUser_thenReturnSavedObject() throws Exception {
         // given
         BDDMockito.given(aesCipher.encrypt(userModel.getPassword())).willReturn("Password");
-        BDDMockito.given(userHelper.mapToEntity(userModel)).willReturn(userEntity);
+        BDDMockito.given(userHelper.mapToEntity(userDto)).willReturn(userEntity);
+        BDDMockito.given(userHelper.mapToModel(userEntity)).willReturn(userModel);
         BDDMockito.given(categoryService.getCategoryByCode(userModel.getCategory())).willReturn(userCategory);
         // when
-        UserModel responseUserModel=userService.addUser(userModel);
+        UserModel responseUserModel=userService.addUser(userDto);
         // then
-        BDDMockito.verify(userRepository, Mockito.times(1)).save(userEntity);
+        BDDMockito.verify(userRepository, Mockito.times(1))
+                .save(Mockito.any(UserEntity.class));
         Assertions.assertThat(responseUserModel).isNotNull();
     }
 
@@ -79,10 +93,10 @@ class UserServiceTest {
     public void givenUserModel_whenAddUser_thenThrowsCategoryNotFound() throws Exception {
         // given
         BDDMockito.given(aesCipher.encrypt(userModel.getPassword())).willReturn("Password");
-        BDDMockito.given(userHelper.mapToEntity(userModel)).willReturn(userEntity);
+        BDDMockito.given(userHelper.mapToEntity(userDto)).willReturn(userEntity);
         BDDMockito.given(categoryService.getCategoryByCode(userModel.getCategory())).willReturn(null);
         // when
-        org.junit.jupiter.api.Assertions.assertThrows(UserCategoryNotFound.class, ()-> userService.addUser(userModel));
+        org.junit.jupiter.api.Assertions.assertThrows(UserCategoryNotFound.class, ()-> userService.addUser(userDto));
         // then
         BDDMockito.verify(userRepository,Mockito.never()).save(userEntity);
     }
