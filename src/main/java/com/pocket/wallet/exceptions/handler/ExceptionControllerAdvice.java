@@ -1,7 +1,9 @@
 package com.pocket.wallet.exceptions.handler;
 
+import com.pocket.wallet.exceptions.InsufficientBalance;
 import com.pocket.wallet.exceptions.InvalidAccountStatus;
 import com.pocket.wallet.exceptions.UserCategoryNotFound;
+import com.pocket.wallet.exceptions.UserNotFoundException;
 import com.pocket.wallet.exceptions.response.ErrorDetails;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +21,18 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(InvalidAccountStatus.class)
     public ResponseEntity<ErrorDetails> invalidAccountStatus(InvalidAccountStatus ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorDetails(Integer.valueOf(ex.getErrorCode().getCode()), ex.getErrorCode().getMessage()));
+    }
+
+    @ExceptionHandler(InsufficientBalance.class)
+    public ResponseEntity<ErrorDetails> insufficientBalance(InsufficientBalance ex){
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorDetails(Integer.valueOf(ex.getErrorCode().getCode()), ex.getErrorCode().getMessage()));
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorDetails> userNotFoundException(UserNotFoundException ex){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErrorDetails(Integer.valueOf(ex.getErrorCode().getCode()), ex.getErrorCode().getMessage()));
     }

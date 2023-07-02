@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.web.cors.CorsConfiguration;
 import java.util.Collections;
 
@@ -31,13 +30,14 @@ public class WalletConfiguration {
                     config.setAllowedHeaders(Collections.singletonList("*"));
                     config.setMaxAge(3600L);
                     return config;
-                }).and().csrf().ignoringAntMatchers("/login/**").
+                }).and().csrf().disable()
+                /*.ignoringAntMatchers("/login/**").
                 csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and()
+                .and()*/
                 .addFilterBefore(jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests( (auth)->auth
                         .antMatchers("/login/**").permitAll()
-                        .antMatchers("/users").authenticated()
+                        .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults());
         return http.build();
     }

@@ -27,6 +27,10 @@ public class UserService {
     private final AESCipher aesCipher;
     private final PasswordEncoder passwordEncoder;
 
+    public UserEntity getUserById(Long id){
+        return userRepository.getById(id);
+    }
+
     public UserEntity getUserByEmail(String email){
         return userRepository.getByEmail(email);
     }

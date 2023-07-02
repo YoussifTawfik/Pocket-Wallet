@@ -3,10 +3,11 @@ package com.pocket.wallet.services.user;
 import com.pocket.wallet.dto.UserDto;
 import com.pocket.wallet.entity.UserEntity;
 import com.pocket.wallet.models.UserModel;
+import com.pocket.wallet.services.IBasicHelper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserHelper {
+public class UserHelper implements IBasicHelper<UserEntity, UserModel> {
 
     public UserEntity mapToEntity(UserModel model){
         UserEntity userEntity=new UserEntity();

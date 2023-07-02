@@ -31,9 +31,6 @@ public class UserEntity extends BasicEntity {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "ROLE", nullable = false)
-    private String role;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_CATEGORY_ID")
     private UserCategory userCategory;

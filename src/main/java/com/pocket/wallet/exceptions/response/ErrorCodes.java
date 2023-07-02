@@ -3,7 +3,10 @@ package com.pocket.wallet.exceptions.response;
 public enum ErrorCodes {
 
     UNDEFINED_USER_CATEGORY(Prefix.USER.getPrefix()+"01","Undefined User Category"),
-    INVALID_ACCOUNT_STATUS(Prefix.ACCOUNT.getPrefix()+"01","Invalid Account Status");
+
+    USER_NOT_FOUND(Prefix.USER.getPrefix()+"02","User not found"),
+    INVALID_ACCOUNT_STATUS(Prefix.ACCOUNT.getPrefix()+"01","Invalid Account Status"),
+    INSUFFICIENT_BALANCE(Prefix.ACCOUNT.getPrefix()+"02","Insufficient Account Balance");
 
     private String message;
     private final String code;
@@ -23,7 +26,7 @@ public enum ErrorCodes {
 
 
     private enum Prefix{
-        USER("1"), ACCOUNT("2");
+        USER("11"), ACCOUNT("22");
 
         private String pre;
 
