@@ -37,6 +37,8 @@ public class WalletConfiguration {
                 .addFilterBefore(jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests( (auth)->auth
                         .antMatchers("/login/**").permitAll()
+                        .antMatchers("/v3/api-docs/**").permitAll()
+                        .antMatchers("/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 ).httpBasic(Customizer.withDefaults());
         return http.build();

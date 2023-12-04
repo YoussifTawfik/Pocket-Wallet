@@ -1,9 +1,7 @@
 package com.pocket.wallet.services.account;
 
 import com.pocket.wallet.entity.Account;
-import com.pocket.wallet.entity.UserEntity;
 import com.pocket.wallet.models.AccountModel;
-import com.pocket.wallet.models.UserModel;
 import com.pocket.wallet.services.IBasicHelper;
 import com.pocket.wallet.services.user.UserHelper;
 import lombok.RequiredArgsConstructor;
